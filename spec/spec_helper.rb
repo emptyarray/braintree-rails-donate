@@ -5,7 +5,6 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require "capybara/rspec"
 require "capybara/rails"
-#require 'fake_braintree'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -38,8 +37,5 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
-  
-#  config.before do
-#    FakeBraintree.clear!
-#  end
+
 end

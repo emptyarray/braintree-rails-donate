@@ -1,5 +1,5 @@
 # Braintree Rails Donate
-This is a demo of [Braintree's Ruby Library](https://www.braintreepayments.com/docs/ruby/guide/overview) and developer Sandbox integrated with Rails 3 to make a donate button. It uses Braintree's Transparent Redirect feature.
+This is a demo of [Braintree's Ruby Library](https://www.braintreepayments.com/docs/ruby/guide/overview) integrated with Rails 3 to make a donate button. It uses Braintree's Transparent Redirect feature, so that the user is redirected straight through Braintree's URL and back to the app seamlessly.
 
 ## Notes
 
