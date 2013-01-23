@@ -1,10 +1,10 @@
-<% if @result_message %>
-	<div style="color:red"><%= @result_message %></div>
+<% if flash[:result_message] %>
+	<div style="color:red"><%= flash[:result_message] %></div>
 <% end %>
 
 <%= form_for :transaction,
-     :params => @result_params,
-     :errors => @result_errors,
+     :params => flash[:result_params],
+     :errors => flash[:result_errors],
      :builder => ApplicationHelper::BraintreeFormBuilder,
      :url => Braintree::TransparentRedirect.url,
      :html => {:autocomplete => "off"} do |f| -%>
