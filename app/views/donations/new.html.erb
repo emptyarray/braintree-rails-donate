@@ -1,0 +1,29 @@
+<% if @result_message %>
+	<div style="color:red"><%= @result_message %></div>
+<% end %>
+
+<%= form_for :transaction,
+     :params => @result_params,
+     :errors => @result_errors,
+     :builder => ApplicationHelper::BraintreeFormBuilder,
+     :url => Braintree::TransparentRedirect.url,
+     :html => {:autocomplete => "off"} do |f| -%>
+	<div><%= f.label :amount, "Amount" %></div>
+	<div><%= f.select(:amount, @amounts.collect { |x| [ "$" + x, x] }) %></div>
+  <%= field_set_tag "Donor" do -%>
+    <%= f.fields_for :customer do |c| -%>
+      <div><%= c.label :first_name, "First Name" %></div>
+      <div><%= c.text_field :first_name, :value => @default_name %></div>
+    <% end -%>
+  <% end -%>
+  <%= field_set_tag "Credit Card" do -%>
+    <%= f.fields_for :credit_card do |c| -%>
+      <div><%= c.label :number, "Number" %></div>
+      <div><%= c.text_field(:number, :value => @sandbox_card_number) %></div>
+      <div><%= c.label :expiration_date, "Expiration Date (MM/YY)" %></div>
+      <div><%= c.text_field :expiration_date, :value => @sandbox_expiration %></div>
+    <% end -%>
+  <% end -%>
+  <%= hidden_field_tag :tr_data, @tr_data %>
+  <%= f.submit "Submit" %>
+<% end -%>
